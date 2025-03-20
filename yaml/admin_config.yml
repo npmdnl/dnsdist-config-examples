@@ -1,0 +1,45 @@
+webserver:
+  listen_address: "0.0.0.0:8080"
+  acl:
+    - 0.0.0.0/0
+  password: badpassword
+  api_key: badkey
+  hash_plaintext_credentials: true
+  api_requires_authentication: false
+
+console:
+  listen_address: "0.0.0.0:5199"
+  key: "pVC5gO/HECwOfgFzQDjAy6v5mWYmpwcj2h546GjqDgg="
+  acl:
+    - 0.0.0.0/0
+
+acl:
+  - 0.0.0.0/0
+
+binds:
+  - listen_address: "0.0.0.0:53"
+    reuseport: true
+    protocol: Do53
+    threads: 2
+
+backends:
+  - address: "8.8.8.8:53"
+    protocol: Do53
+    pools:
+      - "public_resolvers"
+  - address: "1.1.1.1:53"
+    protocol: Do53
+    pools:
+      - "public_resolvers"
+  - address: "9.9.9.9:53"
+    protocol: Do53
+    pools:
+      - "public_resolvers"
+
+query_rules:
+  - name: "default route"
+    selector:
+      type: "All"
+    action:
+      type: "Pool"
+      pool_name: "public_resolvers"
