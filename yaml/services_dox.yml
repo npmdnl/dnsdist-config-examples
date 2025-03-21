@@ -1,0 +1,49 @@
+acl:
+  - 0.0.0.0/0
+
+binds:
+  - listen_address: "0.0.0.0:53"
+    protocol: Do53
+  
+  - listen_address: "0.0.0.0:853"
+    protocol: DoT
+    tls:
+      certificates:
+        - certificate: /etc/dnsdist/cert.pem
+          key: /etc/dnsdist/key.pem
+
+  - listen_address: "0.0.0.0:853"
+    protocol: DoQ
+    tls:
+      certificates:
+        - certificate: /etc/dnsdist/cert.pem
+          key: /etc/dnsdist/key.pem
+
+  - listen_address: "0.0.0.0:443"
+    protocol: DoH
+    tls:
+      certificates:
+        - certificate: /etc/dnsdist/cert.pem
+          key: /etc/dnsdist/key.pem
+
+  - listen_address: "0.0.0.0:443"
+    protocol: DoH3
+    tls:
+      certificates:
+        - certificate: /etc/dnsdist/cert.pem
+          key: /etc/dnsdist/key.pem
+
+backends:
+  - address: "1.1.1.1:53"
+    protocol: Do53
+    pools:
+      - default
+
+query_rules:
+  - name: "default rule"
+    selector:
+      type: All
+    action:
+      type: Pool
+      pool_name: default
+

@@ -2,16 +2,22 @@
 
 Configuration examples for DNSdist PowerDNS
 
-**Default**:
+**Default configuration provided**:
 
 - Default configuration provided by PowerDNS
     * [LUA](./lua/default_config.lua)
 
-**Administration**:
+**Enable console and web interface**:
 
 - Enable web admin and console interfaces
     * [YAML](./yaml/admin_config.yml)
     * [LUA](./lua/admin_config.lua)
+
+**Enable DoH, DoQ and DoT services**:
+
+- Enable web admin and console interfaces
+    * [YAML](./yaml/services_dox.yml)
+    * [LUA](./lua/services_dox.lua)
 
 **Routing DNS traffic**:
 
@@ -32,7 +38,9 @@ Configuration examples for DNSdist PowerDNS
 
 **Logging DNS traffic**:
 
-- [Remote DNS logging with DNSTAP protocol](./lua/logging_dnstap.lua)
+- Remote DNS logging with DNSTAP protocol and [DNScollector](https://github.com/dmachard/DNS-collector)
+    * [YAML](./yaml/logging_dnstap.yml)
+    * [LUA](./lua/logging_dnstap.lua)
 - [Add extra informations in DNStap field](./lua/logging_dnstap_extra.lua)
 - [Remote DNS logging with Protobuf protocol](./lua/logging_protobuf.lua)
 
