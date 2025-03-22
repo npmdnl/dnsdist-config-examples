@@ -4,14 +4,11 @@ Configuration examples for DNSdist PowerDNS
 
 **Default configuration provided**:
 
-- Default configuration provided by PowerDNS
-    * [LUA](./lua/default_config.lua)
+- Default configuration provided by PowerDNS [LUA](./lua/default_config.lua)
 
 **Admin**:
 
-- Enable web admin and console interfaces
-    * [YAML](./yaml/admin_config.yml)
-    * [LUA](./lua/admin_config.lua)
+- Enable web admin and console interfaces [YAML](./yaml/admin_config.yml) / [LUA](./lua/admin_config.lua)
 
 **DoX services**:
 
@@ -19,16 +16,10 @@ Configuration examples for DNSdist PowerDNS
 
 **Routing DNS traffic**:
 
-- Match Qname with regular expression
-    * [YAML](./yaml/routing_regex.yml)
-    * [LUA](./lua/routing_regex.lua)
-- Tag your traffic and applied specified rules on it
-    * [YAML](./yaml/routing_tag_traffic.yml)
-    * [LUA](./lua/routing_tag_traffic.lua)
-- Match your traffic from ECS client subnet
-    * [LUA](./lua/decode_ecs.lua)
-- Passing source IP client with ProxyProtocol
-    * [LUA](./lua/routing_add_proxyprotocol.lua)
+- Match Qname with regular expression [YAML](./yaml/routing_regex.yml) / [LUA](./lua/routing_regex.lua)
+- Tag your traffic and applied specified rules on it [YAML](./yaml/routing_tag_traffic.yml) / [LUA](./lua/routing_tag_traffic.lua)
+- Match your traffic from ECS client subnet [LUA](./lua/decode_ecs.lua)
+- Passing source IP client with ProxyProtocol [LUA](./lua/routing_add_proxyprotocol.lua)
 
 **Security configuration**:
 
