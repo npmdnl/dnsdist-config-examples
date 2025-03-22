@@ -15,9 +15,7 @@ Configuration examples for DNSdist PowerDNS
 
 **DoX services**:
 
-- Enable DoT, DoH, DoQ, ...
-    * [YAML](./yaml/services_dox.yml)
-    * [LUA](./lua/services_dox.lua)
+- Enable DoT, DoH, DoQ, ... [YAML](./yaml/services_dox.yml) / [LUA](./lua/services_dox.lua)
 
 **Routing DNS traffic**:
 
