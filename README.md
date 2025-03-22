@@ -33,15 +33,9 @@ Configuration examples for DNSdist PowerDNS
 
 **Logging DNS traffic with [DNS-collector](https://github.com/dmachard/DNS-collector)**:
 
-- Remote DNS logging with DNSTAP protocol 
-    * [YAML](./yaml/logging_dnstap.yml)
-    * [LUA](./lua/logging_dnstap.lua)
-- Add extra informations in DNStap field
-    * [YAML](./yaml/logging_dnstap_extra.yml)
-    * [LUA](./lua/logging_dnstap_extra.lua)
-- Remote DNS logging with Protobuf protocol
-    * [YAML](./yaml/logging_protobuf.yml)
-    * [LUA](./lua/logging_protobuf.lua)
+- Remote DNS logging with DNSTAP protocol [YAML](./yaml/logging_dnstap.yml) / [LUA](./lua/logging_dnstap.lua)
+- Add extra informations in DNStap field [YAML](./yaml/logging_dnstap_extra.yml) / [LUA](./lua/logging_dnstap_extra.lua)
+- Remote DNS logging with Protobuf protocol [YAML](./yaml/logging_protobuf.yml) / [LUA](./lua/logging_protobuf.lua)
 
 **Miscs**:
 
