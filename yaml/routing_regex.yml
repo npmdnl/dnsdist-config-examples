@@ -1,0 +1,41 @@
+
+acl:
+  - 0.0.0.0/0
+
+binds:
+  - listen_address: "0.0.0.0:53"
+    protocol: Do53
+
+pools:
+  - name: default
+  - name: google
+
+backends:
+  - address: "1.1.1.1:53"
+    protocol: Do53
+    pools:
+      - default
+  - address: "9.9.9.9:53"
+    protocol: Do53
+    pools:
+      - default
+  - address: "8.8.8.8:53"
+    protocol: Do53
+    pools:
+      - google
+
+query_rules:
+  - name: "gcp rule"
+    selector:
+      type: Regex
+      expression: ".*\\.googleapis\\.com"
+    action:
+      type: Pool
+      pool_name: google
+
+  - name: "default rule"
+    selector:
+      type: All
+    action:
+      type: Pool
+      pool_name: default

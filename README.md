@@ -21,10 +21,16 @@ Configuration examples for DNSdist PowerDNS
 
 **Routing DNS traffic**:
 
-- [Match Qname with regular expression](./lua/routing_regex.lua)
-- [Tag your traffic and applied specified rules on it](./lua/routing_tag_traffic.lua)
-- [Match your traffic from ECS client subnet](./lua/decode_ecs.lua)
-- [Passing source IP client with ProxyProtocol](./lua/routing_add_proxyprotocol.lua)
+- Match Qname with regular expression
+    * [YAML](./yaml/routing_regex.yml)
+    * [LUA](./lua/routing_regex.lua)
+- Tag your traffic and applied specified rules on it
+    * [YAML](./yaml/routing_tag_traffic.yml)
+    * [LUA](./lua/routing_tag_traffic.lua)
+- Match your traffic from ECS client subnet
+    * [LUA](./lua/decode_ecs.lua)
+- Passing source IP client with ProxyProtocol
+    * [LUA](./lua/routing_add_proxyprotocol.lua)
 
 **Security configuration**:
 
