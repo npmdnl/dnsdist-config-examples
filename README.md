@@ -7,15 +7,15 @@ Configuration examples for DNSdist PowerDNS
 - Default configuration provided by PowerDNS
     * [LUA](./lua/default_config.lua)
 
-**Enable console and web interface**:
+**Admin**:
 
 - Enable web admin and console interfaces
     * [YAML](./yaml/admin_config.yml)
     * [LUA](./lua/admin_config.lua)
 
-**Enable DoH, DoQ and DoT services**:
+**DoX services**:
 
-- Enable web admin and console interfaces
+- Enable DoT, DoH, DoQ, ...
     * [YAML](./yaml/services_dox.yml)
     * [LUA](./lua/services_dox.lua)
 
@@ -36,13 +36,17 @@ Configuration examples for DNSdist PowerDNS
 - [List of temporarily blocked domains, the list is managed with DNS notify](./lua/security_blocklist_domains.lua)
 - [Spoofing DNS responses like TXT, A, AAAA, MX and more...](./lua/security_spoofing_qtype.lua)
 
-**Logging DNS traffic**:
+**Logging DNS traffic with [DNS-collector](https://github.com/dmachard/DNS-collector)**:
 
-- Remote DNS logging with DNSTAP protocol and [DNScollector](https://github.com/dmachard/DNS-collector)
+- Remote DNS logging with DNSTAP protocol 
     * [YAML](./yaml/logging_dnstap.yml)
     * [LUA](./lua/logging_dnstap.lua)
-- [Add extra informations in DNStap field](./lua/logging_dnstap_extra.lua)
-- [Remote DNS logging with Protobuf protocol](./lua/logging_protobuf.lua)
+- Add extra informations in DNStap field
+    * [YAML](./yaml/logging_dnstap_extra.yml)
+    * [LUA](./lua/logging_dnstap_extra.lua)
+- Remote DNS logging with Protobuf protocol
+    * [YAML](./yaml/logging_protobuf.yml)
+    * [LUA](./lua/logging_protobuf.lua)
 
 **Miscs**:
 
@@ -55,28 +59,20 @@ Configuration examples for DNSdist PowerDNS
 
 ## Run config from docker
 
-Start dnsdist for v2.x
-
 ```bash
-sudo docker run -d -p 8053:53/udp -p 8053:53/tcp -p 8083:8080 --name=dnsdist --volume=$PWD/lua/basic_config.lua:/etc/dnsdist/conf.d/dnsdist.conf:ro powerdns/dnsdist-20:2.0.0-alpha1 -C /etc/dnsdist/dnsdist.yml
-```
-
-Start dnsdist for v1.x
-
-```bash
-sudo docker run -d -p 8053:53/udp -p 8053:53/tcp -p 8083:8080 --name=dnsdist --volume=$PWD/lua/basic_config.lua:/etc/dnsdist/conf.d/dnsdist.conf:ro powerdns/dnsdist-18:1.8.0
+sudo docke compose up -d
 ```
 
 Reload configuration
 
 ```bash
-sudo docker stop dnsdist && sudo docker start dnsdist
+sudo docker compose restart
 ```
 
 Display logs
 
 ```bash
-sudo docker logs dnsdist
+sudo docker compose logs -f
 dnsdist 1.8.0 comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it according to the terms of the GPL version 2
 Added downstream server 1.1.1.1:53
 Listening on 0.0.0.0:53

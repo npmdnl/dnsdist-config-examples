@@ -16,6 +16,9 @@ console:
 acl:
   - 0.0.0.0/0
 
+security_polling:
+  suffix: ""
+
 binds:
   - listen_address: "0.0.0.0:53"
     reuseport: true

@@ -1,0 +1,52 @@
+acl:
+  - 0.0.0.0/0
+
+binds:
+  - listen_address: "0.0.0.0:53"
+    protocol: Do53
+
+backends:
+  - address: "1.1.1.1:53"
+    protocol: Do53
+    pools:
+      - default
+
+remote_logging:
+  protobuf_loggers:
+    - name: protobuf_logging
+      address: 192.168.1.16:6001
+      connection_count: 2
+
+query_rules:
+  - name: "log all queries with protobuf"
+    selector:
+      type: All
+    action:
+      type: RemoteLog
+      server_id: dnsdist_v2
+      logger_name: protobuf_logging
+
+  - name: "default rule"
+    selector:
+      type: All
+    action:
+      type: Pool
+      pool_name: default
+
+response_rules:
+  - name: "log all responses with protobuf"
+    selector:
+      type: All
+    action:
+      type: RemoteLog
+      server_id: dnsdist_v2
+      logger_name: protobuf_logging
+
+cache_hit_response_rules:
+  - name: "log all responses from cache with protobuf"
+    selector:
+      type: All
+    action:
+      type: RemoteLog
+      server_id: dnsdist_v2_cache
+      logger_name: protobuf_logging
