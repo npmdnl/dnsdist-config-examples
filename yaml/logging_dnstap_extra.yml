@@ -27,7 +27,17 @@ query_rules:
       identity: dnsdist_v2
       logger_name: remote_logging
       alter_function_name: alterDnstapQuery
-      alter_function_file: /etc/dnsdist/dnsdist.lua
+      alter_function_code: |
+        function alterDnstapQuery(dq, tap)
+          local ua = ""
+          for key,value in pairs(dq:getHTTPHeaders()) do
+            if key == 'user-agent' then
+              ua = value
+              break
+            end
+          end
+          tap:setExtra(ua)
+        end
 
   - name: "default rule"
     selector:
@@ -45,7 +55,10 @@ response_rules:
       identity: dnsdist_v2
       logger_name: remote_logging
       alter_function_name: alterDnstapResponse
-      alter_function_file: /etc/dnsdist/dnsdist.lua
+      alter_function_code: |
+        function alterDnstapResponse(dr, tap)
+          tap:setExtra(dr.pool)
+        end
 
 cache_hit_response_rules:
   - name: log all responses from cache
@@ -56,4 +69,7 @@ cache_hit_response_rules:
       identity: dnsdist_v2_cache
       logger_name: remote_logging
       alter_function_name: alterDnstapCachedResponse
-      alter_function_file: /etc/dnsdist/dnsdist.lua
+      alter_function_code: |
+        function alterDnstapCachedResponse(dr, tap)
+          tap:setExtra("cached")
+        end

@@ -18,7 +18,7 @@ Configuration examples for DNSdist PowerDNS
 
 - Match Qname with regular expression [YAML](./yaml/routing_regex.yml) / [LUA](./lua/routing_regex.lua)
 - Tag your traffic and applied specified rules on it [YAML](./yaml/routing_tag_traffic.yml) / [LUA](./lua/routing_tag_traffic.lua)
-- Match your traffic from ECS client subnet [LUA](./lua/decode_ecs.lua)
+- Match your traffic from ECS client subnet [YAML](./lua/routing_decode_ecs.yml) / [LUA](./lua/decode_ecs.lua)
 - Passing source IP client with ProxyProtocol [LUA](./lua/routing_add_proxyprotocol.lua)
 
 **Security configuration**:
@@ -43,7 +43,7 @@ Configuration examples for DNSdist PowerDNS
 - [Flush cache for domain with DNS NOTIFY](./lua/miscs_cache_flush_notify.lua)
 - [Echo capability of ip address from domain name for development](./lua/miscs_echoip.lua)
 - [Resolve hostname from config](./lua/miscs_resolve_hostname.lua)
-- [Add uniq ID between queries and replies and send it through EDNS ](./lua/miscs_add_uniqid.lua)
+- [Add uniq ID between queries and replies and send it through EDNS](./lua/miscs_add_uniqid.lua)
 - [Set RequestorID with FFI](./lua/miscs_ffi_requestorid.lua)
 
 ## Run config from docker
