@@ -49,7 +49,7 @@ Configuration examples for DNSdist PowerDNS
 ## Run config from docker
 
 ```bash
-sudo docke compose up -d
+sudo docker compose up -d
 ```
 
 Reload configuration
