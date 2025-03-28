@@ -1,0 +1,33 @@
+acl:
+  - 0.0.0.0/0
+
+binds:
+  - listen_address: "0.0.0.0:53"
+    protocol: Do53
+    enable_proxy_protocol: true
+
+backends:
+  - address: "1.1.1.1:53"
+    protocol: Do53
+    pools:
+      - default
+
+query_rules:
+  - name: "add ip in proxy protocol"
+    selector:
+      type: QNameSuffix
+      suffixes:
+        - powerdns.com
+    action:
+      type: Lua
+      function_code: |
+        return function(dq)
+          dq:addProxyProtocolValue(1, dq.localaddr:tostring())
+          return DNSAction.None
+        end
+  - name: "default rule"
+    selector:
+      type: All
+    action:
+      type: Pool
+      pool_name: default

@@ -5,6 +5,8 @@ services:
       - ./server.crt:/etc/dnsdist/cert.pem
       - ./server.key:/etc/dnsdist/key.pem
       - ./dnsdist.yml:/etc/dnsdist/dnsdist.yml
+      - ./blocklist.cdb:/etc/dnsdist/blocklist.cdb
+      - ./blocklist.txt:/etc/dnsdist/blocklist.txt
     ports:
       - "853:853/tcp"
       - "853:853/udp"

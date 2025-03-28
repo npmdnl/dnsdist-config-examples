@@ -19,14 +19,14 @@ Configuration examples for DNSdist PowerDNS
 - Match Qname with regular expression [YAML](./yaml/routing_regex.yml) / [LUA](./lua/routing_regex.lua)
 - Tag your traffic and applied specified rules on it [YAML](./yaml/routing_tag_traffic.yml) / [LUA](./lua/routing_tag_traffic.lua)
 - Match your traffic from ECS client subnet [YAML](./yaml/routing_decode_ecs.yml) / [LUA](./lua/decode_ecs.lua)
-- Read source IP client with ProxyProtocol and apply a specific routing on it [YAML](./yaml/routing_read_proxyprotocol.yml) /  [LUA](./lua/routing_read_proxyprotocol.lua)
-- Passing source IP client with ProxyProtocol [LUA](./lua/routing_add_proxyprotocol.lua)
+- Read source IP client with ProxyProtocol and apply a specific routing on it [YAML](./yaml/routing_read_proxyprotocol.yml) / [LUA](./lua/routing_read_ip_proxyprotocol.lua)
+- Add source IP client with ProxyProtocol [YAML](./yaml/routing_add_ip_proxyprotocol.yml) / [LUA](./lua/routing_add_proxyprotocol.lua)
 
-**Security configuration**:
+**Security**:
 
-- [Ads/Malwares blocking with external CDB database](./lua/security_blacklist_cdb.lua)
-- [DNS tunneling blocking](./lua/security_blocking_dnstunneling.lua)
+- Ads/Malwares blocking with external CDB database [YAML](./lua/security_blacklist_cdb.yml) / [LUA](./lua/security_blacklist_cdb.lua)
 - [Blackhole/spoofing domains with external files](./lua/security_blackhole_domains.lua)
+- [DNS tunneling blocking](./lua/security_blocking_dnstunneling.lua)
 - [Blacklist IP addresses with DNS UPDATE control and dynamic blocking duration](./lua/security_blacklist_ip_dnsupdate.lua)
 - [Blacklist IP during XX seconds, the list of IPs is managed with DNS notify and TTL for duration](./lua/security_blacklist_ip_notify.lua)
 - [List of temporarily blocked domains, the list is managed with DNS notify](./lua/security_blocklist_domains.lua)

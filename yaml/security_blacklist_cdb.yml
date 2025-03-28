@@ -1,0 +1,53 @@
+acl:
+  - 0.0.0.0/0
+
+binds:
+  - listen_address: "0.0.0.0:53"
+    protocol: Do53
+    enable_proxy_protocol: true
+
+backends:
+  - address: "1.1.1.1:53"
+    protocol: Do53
+    pools:
+      - default
+
+key_value_stores:
+  cdb:
+    - name: blocklist_cdb
+      file_name: /etc/dnsdist/blocklist.cdb
+      refresh_delay: 3600
+  lookup_keys:
+    qname_keys:
+      - name: lookup_qname
+        wire_format: false
+
+query_rules:
+  - name: "tag ads traffic with cdb database"
+    selector:
+      type: KeyValueStoreLookup
+      kvs_name: blocklist_cdb
+      lookup_key_name: lookup_qname
+    action:
+      type: SetTag
+      tag: policy_block
+      value: ""
+
+
+  - name: "blocklist cdb rule"
+    selector:
+      type: Tag
+      tag: policy_block
+      value: ""
+    action:
+      type: Spoof
+      ips:
+        - "127.0.0.1"
+        - "::1"
+
+  - name: "default rule"
+    selector:
+      type: All
+    action:
+      type: Pool
+      pool_name: default
