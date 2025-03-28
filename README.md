@@ -24,7 +24,7 @@ Configuration examples for DNSdist PowerDNS
 
 **Security**:
 
-- Ads/Malwares blocking with external CDB database [YAML](./lua/security_blacklist_cdb.yml) / [LUA](./lua/security_blacklist_cdb.lua)
+- Ads/Malwares blocking with external CDB database [YAML](./yaml/security_blacklist_cdb.yml) / [LUA](./lua/security_blacklist_cdb.lua)
 - [Blackhole/spoofing domains with external files](./lua/security_blackhole_domains.lua)
 - [DNS tunneling blocking](./lua/security_blocking_dnstunneling.lua)
 - [Blacklist IP addresses with DNS UPDATE control and dynamic blocking duration](./lua/security_blacklist_ip_dnsupdate.lua)
