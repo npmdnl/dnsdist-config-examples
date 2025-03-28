@@ -19,6 +19,7 @@ Configuration examples for DNSdist PowerDNS
 - Match Qname with regular expression [YAML](./yaml/routing_regex.yml) / [LUA](./lua/routing_regex.lua)
 - Tag your traffic and applied specified rules on it [YAML](./yaml/routing_tag_traffic.yml) / [LUA](./lua/routing_tag_traffic.lua)
 - Match your traffic from ECS client subnet [YAML](./yaml/routing_decode_ecs.yml) / [LUA](./lua/decode_ecs.lua)
+- Read source IP client with ProxyProtocol and apply a specific routing on it [YAML](./yaml/routing_read_proxyprotocol.yml) /  [LUA](./lua/routing_read_proxyprotocol.lua)
 - Passing source IP client with ProxyProtocol [LUA](./lua/routing_add_proxyprotocol.lua)
 
 **Security configuration**:
