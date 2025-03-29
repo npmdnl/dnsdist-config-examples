@@ -3,7 +3,9 @@ acl:
 
 binds:
   - listen_address: "0.0.0.0:53"
+    reuseport: true
     protocol: Do53
+    threads: 2
 
 pools:
   - name: default

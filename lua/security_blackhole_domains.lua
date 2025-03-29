@@ -17,7 +17,7 @@ for l in io.lines("/etc/dnsdist/blocklist.txt") do
 end
 
 -- match blackhole domains and spoof response to localhost
-addAction(SuffixMatchNodeRule(blackhole_domains, true), SpoofAction({"127.0.0.1", "[::1]"}, {ttl=3600}), {name="rule_blackholes"})
+addAction(QNameSuffixRule(blackhole_domains, true), SpoofAction({"127.0.0.1", "[::1]"}, {ttl=3600}), {name="rule_blackholes"})
 
 -- default rule
 addAction( AllRule(), PoolAction("default"))

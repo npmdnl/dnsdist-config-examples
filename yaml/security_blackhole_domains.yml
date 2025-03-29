@@ -1,0 +1,48 @@
+acl:
+  - 0.0.0.0/0
+
+binds:
+  - listen_address: "0.0.0.0:53"
+    reuseport: true
+    protocol: Do53
+    enable_proxy_protocol: true
+    threads: 2
+
+backends:
+  - address: "1.1.1.1:53"
+    protocol: Do53
+    pools:
+      - default
+
+query_rules:
+  - name: "blackhole domains"
+    selector:
+      type: QNameSuffix
+      quiet: true
+      suffixes:
+      - xdmdnlutgvsvwvd.com
+      - 1000-help6.club
+      - vikppsod.com
+      - nlkspjjcxyvr.com
+      - 308relacja.site
+      - stats.defense.gov
+      - chirmed.ro
+      - st4ck-givesk1ns.site
+      - newspgeinvestpl.info
+      - wadejohnson.org
+      - ads.asia1.com.sg
+      - fleetpartners.co.nz
+      - besthostbh.no-ip.biz
+      - markt-angebot.com
+    action:
+      type: Spoof
+      ips:
+        - "127.0.0.1"
+        - "::1"
+
+  - name: "default rule"
+    selector:
+      type: All
+    action:
+      type: Pool
+      pool_name: default
