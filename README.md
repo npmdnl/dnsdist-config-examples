@@ -6,21 +6,25 @@ Configuration examples for DNSdist PowerDNS
 
 - Default configuration provided by PowerDNS [LUA](./lua/default_config.lua)
 
-**Admin**:
+**Administration**:
 
-- Enable web admin and console interfaces [YAML](./yaml/admin_config.yml) / [LUA](./lua/admin_config.lua)
+- Enable web admin and console interfaces for easier management [YAML](./yaml/admin_config.yml) / [LUA](./lua/admin_config.lua)
 
 **DoX services**:
 
-- Enable DoT, DoH, DoQ, ... [YAML](./yaml/services_dox.yml) / [LUA](./lua/services_dox.lua)
+- Enable secure DNS protocols such as DoT (DNS over TLS), DoH (DNS over HTTPS), and DoQ (DNS over QUIC): [YAML](./yaml/services_dox.yml) / [LUA](./lua/services_dox.lua)
 
-**Routing DNS traffic**:
+**Backend management**:
 
-- Match Qname with regular expression [YAML](./yaml/routing_regex.yml) / [LUA](./lua/routing_regex.lua)
-- Tag your traffic and applied specified rules on it [YAML](./yaml/routing_tag_traffic.yml) / [LUA](./lua/routing_tag_traffic.lua)
-- Match your traffic from ECS client subnet [YAML](./yaml/routing_decode_ecs.yml) / [LUA](./lua/decode_ecs.lua)
-- Read source IP client with ProxyProtocol and apply a specific routing on it [YAML](./yaml/routing_read_proxyprotocol.yml) / [LUA](./lua/routing_read_ip_proxyprotocol.lua)
-- Add source IP client with ProxyProtocol [YAML](./yaml/routing_add_ip_proxyprotocol.yml) / [LUA](./lua/routing_add_proxyprotocol.lua)
+- Dynamic pool creation with hostname instead of IP [LUA](./lua/backend_hostname.lua)
+
+**DNS Traffic Routing**:
+
+- Match domain queries using regular expressions [YAML](./yaml/routing_regex.yml) / [LUA](./lua/routing_regex.lua)
+- Tag DNS traffic and apply specific rules [YAML](./yaml/routing_tag_traffic.yml) / [LUA](./lua/routing_tag_traffic.lua)
+- Route traffic based on ECS (EDNS Client Subnet): [YAML](./yaml/routing_decode_ecs.yml) / [LUA](./lua/decode_ecs.lua)
+- Read client source IP via Proxy Protocol and apply custom routing [YAML](./yaml/routing_read_proxyprotocol.yml) / [LUA](./lua/routing_read_ip_proxyprotocol.lua)
+- Add client source IP using Proxy Protocol [YAML](./yaml/routing_add_ip_proxyprotocol.yml) / [LUA](./lua/routing_add_proxyprotocol.lua)
 
 **Security**:
 

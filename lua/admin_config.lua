@@ -12,8 +12,8 @@ setKey("pVC5gO/HECwOfgFzQDjAy6v5mWYmpwcj2h546GjqDgg=")
 webserver("0.0.0.0:8080")
 setWebserverConfig({
     acl="0.0.0.0/0", 
-    password="hello", 
-    apiKey="world",
+    password="changeme", 
+    apiKey="changeme",
     hashPlaintextCredentials=true, 
     apiRequiresAuthentication=false}
 )
