@@ -44,6 +44,7 @@ Configuration examples for DNSdist PowerDNS
 
 **Miscs**:
 
+- [Set RD (Recursive Desired) flag](./lua/miscs_set_rd_flags.lua)
 - [Full configuration with load balancing on public DNS resolvers](./lua/miscs_basic_config.lua)
 - [Flush cache for domain with DNS NOTIFY](./lua/miscs_cache_flush_notify.lua)
 - [Echo capability of ip address from domain name for development](./lua/miscs_echoip.lua)
