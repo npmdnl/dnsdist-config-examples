@@ -46,6 +46,11 @@ query_rules:
       ips:
         - "127.0.0.1"
         - "::1"
+# or answer with NXDOMAIN
+# where the lua example can use the name NXDomain, yaml needs RCode digit at this moment
+#    action:
+#      type: RCode
+#      rcode: 3
 
   - name: "default rule"
     selector:
