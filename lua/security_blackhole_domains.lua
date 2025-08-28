@@ -11,7 +11,7 @@ for l in io.lines("/etc/dnsdist/blocklist.txt") do
   if l ~= "" then
     -- ignore commented lines
     if l:find("^#") == nil then
-    	blackhole_list:add(newDNSName(l))
+    	blackhole_domains:add(newDNSName(l))
     end
   end
 end
